@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* font-family: 'Poppins', sans-serif; */
+    color: theme('colors.gray.100');
+    background-color: theme('colors.zinc.800');
+    position: relative;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+*:disabled {
+    cursor: not-allowed;
+}
+
+
+ul {
+list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+overflow-wrap: break-word;
+hyphens: auto;
+}
+
+a {
+    all: unset;
+}
+
+
+
