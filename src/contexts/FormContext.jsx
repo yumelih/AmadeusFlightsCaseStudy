@@ -9,6 +9,7 @@ const initialState = {
     currentTripOption: 'Round trip',
     departureDate: new Date(),
     arrivalDate: null,
+    sortBy:null
 }
 
 function reducer(state, action) {
@@ -37,6 +38,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 currentTripOption: action.payload,
+            }; 
+        case'sortBy/update':
+            return {
+                ...state,
+                sortBy: action.payload,
             };
         default:
             throw new Error("Action unknown");
@@ -44,12 +50,12 @@ function reducer(state, action) {
 }
 
 function FormProvider({children}) {
-    const [{departureAirport, arrivalAirport, tripOptions, currentTripOption, departureDate, arrivalDate}, dispatch] = useReducer(reducer, initialState)
+    const [{departureAirport, arrivalAirport, tripOptions, currentTripOption, departureDate, arrivalDate, sortBy}, dispatch] = useReducer(reducer, initialState)
 
 
     return (
         <FormContext.Provider value={{
-            departureAirport, arrivalAirport, tripOptions, currentTripOption, departureDate, arrivalDate, dispatch
+            departureAirport, arrivalAirport, tripOptions, currentTripOption, departureDate, arrivalDate, sortBy, dispatch
         }}>
             {children}
         </FormContext.Provider>

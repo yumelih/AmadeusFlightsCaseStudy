@@ -7,7 +7,7 @@ import { useForm } from "../contexts/FormContext"
 
 function Form() {
     const {currentTripOption} = useForm()
-    
+
     return (
         <div className="sm:flex sm:items-center sm:justify-between sm:px-4 sm:py-6 px-2 py-3 bg-gray-700 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         <form className="flex flex-col gap-2 items-start">

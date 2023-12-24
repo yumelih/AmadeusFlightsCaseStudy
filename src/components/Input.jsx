@@ -17,7 +17,6 @@ function Input({id, placeholder}) {
     useEffect(() => {
        if(isLoading) return;
        let data = id === 'departureAirport' ? departureAirport : arrivalAirport; 
-       console.log(data, airports)
        const res = airports?.filter(elm => {
             return (
                 data &&
@@ -25,7 +24,7 @@ function Input({id, placeholder}) {
             )
         })
         setResults(res)
-        console.log(res)
+     
         
     }, [departureAirport, arrivalAirport, isLoading, airports, id])
 
