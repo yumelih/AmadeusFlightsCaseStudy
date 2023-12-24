@@ -1,10 +1,15 @@
-import {format, parseISO, isSameDay, addMinutes } from "date-fns";
+import {format, parseISO, addMinutes } from "date-fns";
+import { checkIfDatesAreEqual } from "../helpers/checkIfDatesAreEqual";
 // import { useForm } from "../contexts/FormContext"
 
 // import { useEffect, useMemo, useRef, useState } from "react";
 
-export default function SubTable({flights}) {
+export default function SubTable({flights, returningDate}) {
+  
   console.log(flights)
+  const filteredFlights = flights?.filter(elm => checkIfDatesAreEqual(elm.departure_date, returningDate))
+
+  console.log(filteredFlights)
  
   function durationFormula(d1) {
     const hours = Math.floor(d1 / 60);
@@ -106,20 +111,20 @@ export default function SubTable({flights}) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                 {flights?.map((flig) => ( 
+                 {filteredFlights?.map((flig) => ( 
                     <tr key={flig.flight_number}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {flig.departure_airport + " - " + flig.arrival_airport}
                       </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {flig.airlines}
+                      </td><td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {format(new Date(flig.departure_date), 'MM.dd.yyyy') + ' - ' + arrDate(flig.departure_date, Number(flig.duration)).newIsoDateTimeString}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {format(new Date(flig.departure_date), 'HH.mm') + ' - ' + format(arrDate(flig.departure_date, Number(flig.duration)).newDate, 'HH.mm')}
                       </td>
-                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {format(new Date(flig.departure_date), 'MM.dd.yyyy') + ' - ' + arrDate(flig.departure_date, Number(flig.duration)).newIsoDateTimeString}
-                      </td>
+                     
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {durationFormula(flig.duration)}
                       </td>

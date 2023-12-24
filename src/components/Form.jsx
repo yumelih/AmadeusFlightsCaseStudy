@@ -19,7 +19,7 @@ function Form() {
                 </div>
                 <div className="flex gap-1">
                     <DatePick id="departureDate" placeholder="Depature Date"/>
-                    {currentTripOption === "Round trip" ? <DatePick id="arrivalDate" placeholder="Arrival Date"/> : ""}
+                    {currentTripOption === "Round trip" ? <DatePick id="arrivalDate" placeholder="Returning Date"/> : ""}
                 </div>
             </div> 
         </form>    

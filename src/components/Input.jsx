@@ -20,7 +20,7 @@ function Input({id, placeholder}) {
        const res = airports?.filter(elm => {
             return (
                 data &&
-                elm.airport.toLowerCase().includes(data.toLowerCase())
+                (elm.airport.toLowerCase().includes(data.toLowerCase()) || elm.iata.toLowerCase().includes(data.toLowerCase()))
             )
         })
         setResults(res)

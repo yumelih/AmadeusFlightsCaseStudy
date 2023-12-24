@@ -12,7 +12,7 @@ const SearchResult = ({ result, id }) => {
       className="px-5 py-2.5 hover:bg-gray-400 cursor-pointer"
       onClick={(e) => handleClick(e, id, `${result.iata + '-' + result.airport}`)}
     >
-      {result.airport}
+      {result.iata + '-' + result.airport}
     </div>
   );
 };

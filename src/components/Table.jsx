@@ -9,7 +9,7 @@ export default function Table() {
   const {departureAirport, arrivalAirport, departureDate, arrivalDate, currentTripOption} = useForm();
   const {flight, loading, error} = useFlight(departureAirport?.split("-")[0], arrivalAirport?.split("-")[0])
   const [F, setF] = useState([])
-  const [arrayOfObjects, setArrayOfObjects] = useState([])
+  const returningFlights = F?.flatMap(elm => elm.returning_flights).flat()
 
   const flights = useMemo(() => {
     return flight;
@@ -50,16 +50,7 @@ export default function Table() {
 
   }, [departureDate, arrivalDate, flights, currentTripOption])
 
-  useEffect(() => {
-    if(!F) return;
-    for (const subArray of F) {
-      for (const elm of subArray['returning_flights']) {
-        // Check if the item is an object
-        setArrayOfObjects(item => {return[...item, elm]}); // Add the object to the new array
-      }
-    }
-    
-  }, [F, departureAirport, arrivalAirport, departureDate])
+
 
 
   return (
@@ -176,7 +167,7 @@ export default function Table() {
           </div>
         </div>
       </div>
-      {currentTripOption === 'Round trip' && <SubTable flights={arrayOfObjects}/>}
+      {currentTripOption === 'Round trip' && <SubTable flights={returningFlights} returningDate={arrivalDate}/>}
     </div>
   );
 }
