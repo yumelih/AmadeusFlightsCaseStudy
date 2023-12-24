@@ -5,27 +5,18 @@ import { useAirport } from '../hooks/useAirports'
 import SearchResults from './SearchResults'
 import { useForm } from '../contexts/FormContext';
 
-function Input({id, data, placeholder, onChange, onClick}) {
+function Input({id, placeholder}) {
     const {airports, isLoading, error: airportsError} = useAirport();
     const {departureAirport, arrivalAirport, dispatch} = useForm();
-
-
-    const handleChange = function(e) {
-       dispat
-    };
-
-    const handleClick = function(key, value) {
-        setData(d => {
-            return {...d, [key]: value}
-        })
-    }
-
-
     const [results, setResults] = useState([])
 
+    const handleChange = function(e, id) {
+       dispatch({type: `${id}/update`, payload: e.target.value})
+    };
 
     useEffect(() => {
        if(isLoading) return;
+       let data = id === 'departureAirport' ? departureAirport : arrivalAirport; 
        console.log(data, airports)
        const res = airports?.filter(elm => {
             return (
@@ -36,7 +27,7 @@ function Input({id, data, placeholder, onChange, onClick}) {
         setResults(res)
         console.log(res)
         
-    }, [data, isLoading, airports])
+    }, [departureAirport, arrivalAirport, isLoading, airports, id])
 
     return (
         <div>
@@ -49,12 +40,12 @@ function Input({id, data, placeholder, onChange, onClick}) {
                     type="email"
                     name={id}
                     id={id}
-                    value={data}
-                    onChange={onChange}
+                    value={id === 'departureAirport' ? departureAirport : arrivalAirport}
+                    onChange={(e) => handleChange(e, id)}
                     className="block w-full rounded-md border-0 py-1.5 pl-10 pr-1 text-gray-100 ring-2 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 bg-transparent "
                     placeholder={placeholder}
                 />
-                {results && results.length > 0 && <SearchResults id={id} results={results} onClick={onClick}/>}
+                {results && results.length > 0 && <SearchResults id={id} results={results}/>}
             </div>
             </div>
       </div>

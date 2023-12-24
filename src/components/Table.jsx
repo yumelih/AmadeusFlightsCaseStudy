@@ -1,14 +1,23 @@
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
+import { differenceInHours, differenceInMilliseconds, differenceInMinutes, format } from "date-fns";
+import { useForm } from "../contexts/FormContext"
+import { useFlight } from "../hooks/useFlight";
 
 export default function Table() {
+  const {departureAirport, arrivalAirport} = useForm();
+  const {flight, loading, error} = useFlight(departureAirport?.split("-")[0], arrivalAirport?.split("-")[0])
+
+  function durationFormula(d1, d2) {
+    const minutesDifference = differenceInMinutes(d1, d2);
+
+    const hours = Math.floor(minutesDifference / 60);
+    const remainingMinutes = minutesDifference % 60;
+
+    const formattedDifference = `${hours} hours ${remainingMinutes} minutes`;
+
+    return formattedDifference
+  }
+
+
   return (
     <div className="">
       <div className="sm:flex sm:items-center">
@@ -77,22 +86,22 @@ export default function Table() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
+                  {flight?.map((flig) => (
+                    <tr key={flig.flight_number}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
+                        {flig.airlines}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                        {format(new Date(flig.departure_date), 'HH.mm') + ' - ' + format(new Date(flig.arrival_date), 'HH.mm')}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
+                        {durationFormula(new Date(flig.arrival_date), new Date(flig.departure_date))}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                        {flig.transit ? 'Yes': "No"}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 font-medium text-gray-900">
+                        {flig.price}
                       </td>
                       {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a
