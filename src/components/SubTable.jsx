@@ -6,10 +6,8 @@ import { checkIfDatesAreEqual } from "../helpers/checkIfDatesAreEqual";
 
 export default function SubTable({flights, returningDate}) {
   
-  console.log(flights)
   const filteredFlights = flights?.filter(elm => checkIfDatesAreEqual(elm.departure_date, returningDate))
 
-  console.log(filteredFlights)
  
   function durationFormula(d1) {
     const hours = Math.floor(d1 / 60);

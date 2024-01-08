@@ -6,7 +6,7 @@ import SubTable from "./SubTable";
 import SortBy from "./SortBy";
 
 export default function Table() {
-  const {departureAirport, arrivalAirport, departureDate, arrivalDate, currentTripOption} = useForm();
+  const {departureAirport, arrivalAirport, departureDate, arrivalDate, currentTripOption, sortBy} = useForm();
   const {flight, loading, error} = useFlight(departureAirport?.split("-")[0], arrivalAirport?.split("-")[0])
   const [F, setF] = useState([])
   const returningFlights = F?.flatMap(elm => elm.returning_flights).flat()
@@ -15,6 +15,7 @@ export default function Table() {
     return flight;
   }, [flight])
   
+
 
 
   function durationFormula(d1, d2) {
@@ -48,7 +49,7 @@ export default function Table() {
       return checkIfDatesAreEqual(departureDate, f.departure_date)  
     }))
 
-  }, [departureDate, arrivalDate, flights, currentTripOption])
+  }, [departureDate, arrivalDate, flights, currentTripOption, sortBy])
 
 
 

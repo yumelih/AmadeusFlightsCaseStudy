@@ -12,11 +12,11 @@ function SortBy() {
 
 
   const sortByValues = [
-    {title: 'Sort by price(low-first)', value: 'price-asc'},
     {title: 'Sort by price(high-first)', value: 'price-desc'},
-    {title: 'Sort by departure(earlier-first)', value: 'departure_date-desc'},
-    {title: 'Sort by departure(latest-first)', value: 'departure_date-asc'},{title: 'Sort by arrival(earlier-first)', value: 'arrival_date-desc'},
-    {title: 'Sort by arrival(latest-first)', value: 'arrival_date-asc'},
+    {title: 'Sort by price(low-first)', value: 'price-asc'},
+    {title: 'Sort by departure(latest-first)', value: 'departure_date-desc'},
+    {title: 'Sort by departure(earlier-first)', value: 'departure_date-asc'},{title: 'Sort by arrival(latest-first)', value: 'arrival_date-desc'},
+    {title: 'Sort by arrival(earlier-first)', value: 'arrival_date-asc'},
     {title: 'Sort by duration(longest-first)', value: 'duration-desc'},
     // {title: 'Sort by duration(shortest-first)', value: 'duration-asc'},
   ]
