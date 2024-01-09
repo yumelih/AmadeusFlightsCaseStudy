@@ -7,14 +7,42 @@ import toast from "react-hot-toast";
 
 
 function Form() {
-    const {currentTripOption, departureDate, arrivalDate, dispatch} = useForm()
+    const {currentTripOption, departureDate, arrivalDate, departureAirport, arrivalAirport, dispatch} = useForm()
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        if(departureAirport === arrivalAirport) {
+            toast.error('Departure airport and arrival airport can\'t be the same')
+        }
+
+        if(!departureAirport){
+            toast.error('Please fill departure airport');
+            return;
+        }
+
+
+        if(!arrivalAirport){
+            toast.error('Please fill arrival airport');
+            return;
+        }
+
+        if(!departureDate){
+            toast.error('Please fill departure date');
+            return;
+        }
+
+        if(!departureDate){
+             toast.error('Please fill departure date');
+             return;
+        }
+        
+        if(!arrivalDate && currentTripOption === 'Round trip') {
+            toast.error('Please fill arrival date');
+            return;
+        }
+
         dispatch({type: 'formSubmit/update', payload: true})
-        if(!departureDate) toast.error('Please fill departure date');
-        if(!arrivalDate && currentTripOption === 'Round trip') toast.error('Please fill arrival date');
-    
     }
 
     return (

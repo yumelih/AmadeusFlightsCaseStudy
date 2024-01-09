@@ -5,7 +5,7 @@ import { compareDates } from "../helpers/compareDates";
 import { differenceBetweenDates, sortDatesDuration } from "../helpers/differenceBetweenDates";
 
 export function useFlight(departureAirport, arrivalAirport) {
-  const {sortBy} = useForm()
+  const {sortBy, isSearching} = useForm()
 
   const sortValue = sortBy?.value ? sortBy?.value : 'price-asc';
 
@@ -14,14 +14,15 @@ export function useFlight(departureAirport, arrivalAirport) {
   const currentSort = {field, direction}
 
 
+
   let {
     isLoading,
     data: flight,
     error,
-  } = useQuery({
+  } = useQuery(isSearching ? {
     queryKey: ["flight", departureAirport, arrivalAirport],
     queryFn: () => getFlight(departureAirport, arrivalAirport),
-  });
+  } : {queryKey: ['flight'], queryFn: () => { return []}});
 
   if(currentSort) {
     switch(currentSort.field) {
