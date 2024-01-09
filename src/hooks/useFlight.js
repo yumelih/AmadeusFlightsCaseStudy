@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getFlight } from "../services/apiFlights";
 import { useForm } from "../contexts/FormContext";
 import { compareDates } from "../helpers/compareDates";
+import { differenceBetweenDates, sortDatesDuration } from "../helpers/differenceBetweenDates";
 
 export function useFlight(departureAirport, arrivalAirport) {
   const {sortBy} = useForm()
@@ -38,6 +39,11 @@ export function useFlight(departureAirport, arrivalAirport) {
             return currentSort.direction === 'asc' ? compareDates(a['arrival_date'], b['arrival_date']) : compareDates(b['arrival_date'], a['arrival_date'])
           })
           break
+      case 'duration':
+        flight = flight?.sort((a, b) => {
+          return currentSort.direction === 'asc' ? sortDatesDuration(differenceBetweenDates(a['arrival_date'], a['departure_date']), differenceBetweenDates(b['arrival_date'], b['departure_date']))  : sortDatesDuration(differenceBetweenDates(b['arrival_date'], b['departure_date']), differenceBetweenDates(a['arrival_date'], a['departure_date'])) 
+        })
+        break
       default:
         flight = flight?.sort((a, b) => { return currentSort.direction === 'asc' ? Number(a["price"].slice(1)) - Number(b["price"].slice(1)) : Number(b["price"].slice(1)) - Number(a["price"].slice(1))})
     }
