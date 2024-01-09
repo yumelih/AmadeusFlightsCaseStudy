@@ -25,7 +25,7 @@ function SortBy() {
     <Menu as="div" className="relative inline-block text-left ">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-xs font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-500 hover:bg-gray-600 ">
-          {!sortBy ? sortByValues[0].title: sortBy.title}
+          {!sortBy ? sortByValues[1].title: sortBy.title}
           <ChevronDownIcon className="-mr-1 h-4 w-4 text-gray-300" aria-hidden="true" />
         </Menu.Button>
       </div>
