@@ -4,6 +4,7 @@ import { useFlight } from "../hooks/useFlight";
 import { useEffect, useMemo, useState } from "react";
 import SubTable from "./SubTable";
 import SortBy from "./SortBy";
+import Error from "./Error";
 
 export default function Table() {
   const {departureAirport, arrivalAirport, departureDate, arrivalDate, currentTripOption, sortBy} = useForm();
@@ -52,7 +53,9 @@ export default function Table() {
   }, [departureDate, arrivalDate, flights, currentTripOption, sortBy])
 
 
-
+  if(error) {
+    return <Error err={error}/>
+  }
 
   return (
     <div className="mt-8">
@@ -168,7 +171,7 @@ export default function Table() {
           </div>
         </div>
       </div>
-      {currentTripOption === 'Round trip' && <SubTable flights={returningFlights} returningDate={arrivalDate}/>}
+      {currentTripOption === 'Round trip' && <SubTable flights={returningFlights?.concat(F)} returningDate={arrivalDate}/>}
     </div>
   );
 }

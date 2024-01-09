@@ -1,4 +1,4 @@
-import { getMinute } from "../helpers/getMinute";
+import toast from "react-hot-toast";
 import supabase from "./supabase";
 
 export async function getFlight(departureAirport, arrivalAirport) {
@@ -17,7 +17,7 @@ export async function getFlight(departureAirport, arrivalAirport) {
     // let sortedData = currentSort.direction === 'asc' && currentSort.field === 'duration' ? data.sort((a,b) => getMinute(a.departure_date) - getMinute(b.departure_date)) : data.sort((a,b) => getMinute(b.departure_date) - getMinute(a.departure_date))
 
     if(error) {
-        throw new Error('Flight not found!')
+        toast.error('Had an error while fetching flights data. Please try again later.')
     }
 
     return data

@@ -45,7 +45,7 @@ export function useFlight(departureAirport, arrivalAirport) {
         })
         break
       default:
-        flight = flight?.sort((a, b) => { return currentSort.direction === 'asc' ? Number(a["price"].slice(1)) - Number(b["price"].slice(1)) : Number(b["price"].slice(1)) - Number(a["price"].slice(1))})
+        flight = flight?.sort((a, b) => { return Number(a["price"].slice(1)) - Number(b["price"].slice(1)) })
     }
   }
 
