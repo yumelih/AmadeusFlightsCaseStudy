@@ -1,8 +1,36 @@
-# React + Vite
+# Amadeus Flight Case Study
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the Amadeus Flight Case Study
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
+
+
+### Links
+
+- Live Site URL: [Live Site](https://flights-kappa-two.vercel.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Desktop-first workflow
+- [React](https://reactjs.org/) - JS library
+- Context Api for UI State Management
+- [React Tanstack Query] - For remote state management
+- [Tailwind](https://tailwindui.com/documentation) - For styles
+
+
+## Author
+
+- @yumelih
