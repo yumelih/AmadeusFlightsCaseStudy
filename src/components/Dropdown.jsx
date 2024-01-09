@@ -3,6 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon, CheckIcon } from '@heroicons/react/20/solid'
 import { useForm } from '../contexts/FormContext'
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -36,7 +37,7 @@ function Dropdown() {
                   onClick={() => dispatch({type: "currentTripOption/update", payload: option})}
                   className={classNames(
                     active ? 'bg-gray-500 text-gray-300' : 'text-gray-400',
-                    'block px-4 py-2 text-sm cursor-pointer flex gap-2'
+                    'px-4 py-2 text-sm cursor-pointer flex gap-2'
                   )}
                 >
                   {currentTripOption === option ? <CheckIcon className="-mr-1 h-5 w-5 text-gray-300" aria-hidden="true" /> : ''}

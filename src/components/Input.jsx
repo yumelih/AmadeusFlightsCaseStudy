@@ -36,13 +36,14 @@ function Input({id, placeholder}) {
             </div>
             <div className="relative">
                 <input
-                    type="email"
+                    type="text"
                     name={id}
                     id={id}
                     value={id === 'departureAirport' ? departureAirport : arrivalAirport}
                     onChange={(e) => handleChange(e, id)}
                     className="block w-full rounded-md border-0 py-1.5 pl-10 pr-1 text-gray-100 ring-2 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 bg-transparent "
                     placeholder={placeholder}
+                    required
                 />
                 {results && results.length > 0 && <SearchResults id={id} results={results}/>}
             </div>

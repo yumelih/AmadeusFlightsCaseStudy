@@ -49,5 +49,7 @@ export function useFlight(departureAirport, arrivalAirport) {
     }
   }
 
+ 
+
   return { flight, isLoading, error };
 }

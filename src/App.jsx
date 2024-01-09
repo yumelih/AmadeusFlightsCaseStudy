@@ -38,8 +38,8 @@ function App() {
               fontSize: "16px",
               maxWidth: "500px",
               padding: "16px 24px",
-              backgroundColor: "var(--color-grey-0)",
-              color: "var(--color-grey-700)",
+              backgroundColor: "#F5F5F5",
+              color: "#0C0404",
             },
           }}
         />
