@@ -7,7 +7,7 @@ function AppLayout() {
   const {currenTripOption} = useForm();
   
   return (
-      <div className="w-100 p-16 flex flex-col justify-start items-center gap-4">
+      <div className="w-100 p-16 flex flex-col justify-start items-center gap-4 relative">
         <h1 className="text-4xl">Flights</h1>
         <div>
           <Form/>

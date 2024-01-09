@@ -9,7 +9,7 @@ const SearchResult = ({ result, id }) => {
 
   return (
     <div
-      className="px-5 py-2.5 hover:bg-gray-400 cursor-pointer"
+      className="px-5 py-2.5 hover:bg-gray-400 cursor-pointer relative z-50"
       onClick={(e) => handleClick(e, id, `${result.iata + '-' + result.airport}`)}
     >
       {result.iata + '-' + result.airport}
