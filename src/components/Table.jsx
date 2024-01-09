@@ -5,10 +5,11 @@ import { useEffect, useMemo, useState } from "react";
 import SubTable from "./SubTable";
 import SortBy from "./SortBy";
 import Error from "./Error";
+import Loading from "./Loading";
 
 export default function Table() {
   const {departureAirport, arrivalAirport, departureDate, arrivalDate, currentTripOption, sortBy} = useForm();
-  const {flight, loading, error} = useFlight(departureAirport?.split("-")[0], arrivalAirport?.split("-")[0])
+  const {flight, isLoading, error} = useFlight(departureAirport?.split("-")[0], arrivalAirport?.split("-")[0])
   const [F, setF] = useState([])
   const returningFlights = F?.flatMap(elm => elm.returning_flights).flat()
 
@@ -52,6 +53,9 @@ export default function Table() {
 
   }, [departureDate, arrivalDate, flights, currentTripOption, sortBy])
 
+  if(isLoading) {
+    return <Loading/> 
+  }
 
   if(error) {
     return <Error err={error}/>
@@ -77,7 +81,7 @@ export default function Table() {
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
+              <table className="min-w-full divide-y divide-gray-300 relative">
                 <thead className="bg-gray-50">
                   <tr>
                     <th
