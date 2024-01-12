@@ -5,11 +5,17 @@ This is a solution to the Amadeus Flight Case Study
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
+  - [Test data](#test-data)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
+
+## Test Data
+Data for this app only has 3000 rows and avaliable flights are between dates: 24 December 2023 - 24 January 2024
+
+Several flights you can try:
+
 
 
 ### Links
