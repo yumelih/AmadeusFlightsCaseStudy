@@ -73,7 +73,7 @@ export default function Table() {
             email and role.
           </p>
         </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none relative">
           <SortBy/>
         </div>
       </div>
